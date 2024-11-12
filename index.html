@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            margin-top: 100px;
+            background-color: rgb(146, 134, 225);
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form {
+            padding: 20px;
+            align-items: center;
+        }
+
+        .form-outer {
+            display: flex;
+            margin-bottom: 20px;
+            max-width: 100%;
+        }
+
+        .form-outer button {
+            display: flex;
+            padding: 10px 0px;
+            width: 100%;
+            background-color: rgb(211, 54, 54);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+
+
+        a {
+            color: hsl(250, 84%, 54%);
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        img,
+        video,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        .cd-btn {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375em;
+            font-size: 1em;
+            text-decoration: none;
+            line-height: 1.2;
+            cursor: pointer;
+            transition: 0.2s;
+            will-change: transform;
+        }
+
+        .cd-btn:focus-visible {
+            outline: none;
+        }
+
+        .cd-btn:active {
+            transform: translateY(2px);
+        }
+
+        .cd-btn--primary {
+            background: hsl(250, 84%, 54%);
+            box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.15),
+                0 1px 3px hsla(250, 84%, 38%, 0.25),
+                0 2px 6px hsla(250, 84%, 38%, 0.1),
+                0 6px 10px -2px hsla(250, 84%, 38%, 0.25);
+            color: hsl(0, 0%, 100%);
+        }
+
+        .cd-btn--primary:hover {
+            background: hsl(250, 84%, 60%);
+            box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.15),
+                0 1px 2px hsla(250, 84%, 38%, 0.25),
+                0 1px 4px hsla(250, 84%, 38%, 0.1),
+                0 3px 6px -2px hsla(250, 84%, 38%, 0.25);
+        }
+
+        .cd-btn--primary:focus-visible {
+            box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.15),
+                0 1px 2px hsla(250, 84%, 38%, 0.25),
+                0 1px 4px hsla(250, 84%, 38%, 0.1),
+                0 3px 6px -2px hsla(250, 84%, 38%, 0.25),
+                0 0 0 2px hsl(0, 0%, 100%),
+                0 0 0 4px hsl(250, 84%, 54%);
+        }
+
+        .cd-btn--subtle {
+            background: hsl(0, 0%, 100%);
+            color: hsl(230, 13%, 9%);
+            box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.1),
+                0 0 0 1px hsla(230, 13%, 9%, 0.02),
+                0 0.3px 0.4px hsla(230, 13%, 9%, 0.025),
+                0 1px 3px -1px hsla(230, 13%, 9%, 0.2),
+                0 3.5px 6px hsla(230, 13%, 9%, 0.12);
+        }
+
+        .cd-btn--subtle:hover {
+            background: hsl(0, 0%, 100%);
+            box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.1),
+                0 0 0 1px hsla(230, 13%, 9%, 0.02),
+                0 0.1px 0.3px hsla(230, 13%, 9%, 0.06),
+                0 1px 2px hsla(230, 13%, 9%, 0.12),
+                0 1px 3px -1px hsla(230, 13%, 9%, 0.2);
+        }
+
+        .cd-btn--subtle:focus-visible {
+            box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.1),
+                0 0 0 1px hsla(230, 13%, 9%, 0.02),
+                0 0.3px 0.4px hsla(230, 13%, 9%, 0.025),
+                0 1px 3px -1px hsla(230, 13%, 9%, 0.2),
+                0 3.5px 6px hsla(230, 13%, 9%, 0.12),
+                0 0 0 2px hsl(0, 0%, 100%),
+                0 0 0 4px hsl(230, 7%, 23%);
+        }
+
+        .cd-btn--accent {
+            background: hsl(342, 89%, 48%);
+            color: hsl(0, 0%, 100%);
+            box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.15),
+                0 1px 3px hsla(342, 89%, 38%, 0.25),
+                0 2px 6px hsla(342, 89%, 38%, 0.1),
+                0 6px 10px -2px hsla(342, 89%, 38%, 0.25);
+        }
+
+        .cd-btn--accent:hover {
+            background: hsl(342, 89%, 56%);
+            box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.15),
+                0 1px 2px hsla(342, 89%, 38%, 0.25),
+                0 1px 4px hsla(342, 89%, 38%, 0.1),
+                0 3px 6px -2px hsla(342, 89%, 38%, 0.1);
+        }
+
+        .cd-btn--accent:focus-visible {
+            box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.15),
+                0 1px 2px hsla(342, 89%, 38%, 0.25),
+                0 1px 4px hsla(342, 89%, 38%, 0.1),
+                0 3px 6px -2px hsla(342, 89%, 38%, 0.1),
+                0 0 0 2px hsl(0, 0%, 100%),
+                0 0 0 4px hsl(342, 89%, 48%);
+        }
+
+        .cd-btn--disabled,
+        .cd-btn[disabled],
+        .cd-btn[readonly] {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .data {
+            color: green;
+            font-style: bold;
+            text-shadow: 0 0 10px rgb(8, 235, 235), 0 0 10px rgb(8, 235, 235), 0 0 40px rgb(8, 235, 235), 0 0 80px rgb(8, 235, 235);
+            font-size: 23px;
+            align-items: center;
+        }
+
+        .call {
+            text-align: center;
+            color: darkorange;
+            font-size: 35px;
+            animation-name: gt;
+            animation-duration: 3s;
+            animation-timing-function: linear;
+            animation-delay: 1s;
+            animation-iteration-count: infinite;
+
+        }
+
+        @keyframes gt {
+            25% {
+                text-shadow: 0 0 10px rgb(8, 235, 235);
+            }
+
+            50% {
+                text-shadow: 0 0 20px rgb(8, 235, 235);
+            }
+
+            75% {
+                text-shadow: 0 0 40px rgb(8, 235, 235);
+            }
+
+            100% {
+                text-shadow: 0 0 80px rgb(8, 235, 235);
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="POST" id="form">
+        <div id="res" class="data"></div>
+        <div class="form-outer">
+
+            <input type="text" name="Name" placeholder="user name" class="cd-btn cd-btn--subtle" required>
+        </div>
+        <div class="form-outer">
+
+            <input type="text" name="Email" placeholder="profile link" class="cd-btn cd-btn--subtle" required>
+        </div>
+        <div class="form-outer">
+
+            <input type="number" name="Mobile" placeholder="Reedem Token" class="cd-btn cd-btn--subtle" required>
+        </div>
+        <div class="form-outer">
+            <button name="btn" class="cd-btn cd-btn--primary">Submit</button>
+        </div>
+
+        <div><br><br>
+            <h4 class="call"><a href="https://shortxlinks.com/60wqzs">Get to Token</a></h4>
+        </div>
+    </form>
+    <Script>
+        let url =
+            'https://script.google.com/macros/s/AKfycbxjrHRUqeoD8y03z9MvXK6h7UjEy_TOr4bqhHmunulP0_mrFAKNlS3hWyzLm3pAxktn/exec'
+        let form = document.querySelector('#form');
+        form.addEventListener("submit", (e) => {
+            e.target.btn.innerHTML = "Submiting....";
+            let d = new FormData(form);
+            fetch(url, {
+                method: "POST",
+                body: d
+            }).then((res) => res.text()).then((finalRes) => {
+                e.target.btn.innerHTML = "Submit";
+                document.getElementById("res").innerHTML = finalRes;
+                form.reset();
+                setTimeout(() => {
+                    document.getElementById("res").innerHTML = '';
+                }, 5000)
+            })
+            e.preventDefault();
+        })
+    </Script>
+</body>
+
+</html>
